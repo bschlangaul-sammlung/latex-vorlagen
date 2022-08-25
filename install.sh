@@ -1,5 +1,8 @@
 #! /bin/sh
 
+TEX_DIR="$HOME/texmf/tex"
+DOC_DIR="$HOME/texmf/doc"
+
 _install() {
   FILES="$(find $1 -type f | sed "s#$1/##")"
   for FILE in $FILES; do
@@ -8,20 +11,22 @@ _install() {
   done
 }
 
-rm -f "$HOME"/texmf/tex/bschlangaul*
-rm -f "$HOME"/texmf/tex/lehramt-informatik*
+rm -f "$TEX_DIR"/bschlangaul*
+
+mkdir -p "$TEX_DIR"
+mkdir -p "$DOC_DIR"
 
 _install pakete
 _install klassen
 
-cp -f fremd/tikz-er2.sty $HOME/texmf/tex
-cp -f fremd/tikz-er2.pdf $HOME/texmf/doc
+cp -f fremd/tikz-er2.sty "$TEX_DIR"
+cp -f fremd/tikz-er2.pdf "$DOC_DIR"
 
-cp -f fremd/tikz-uml.sty $HOME/texmf/tex
-cp -f fremd/tikz-uml.pdf $HOME/texmf/doc
+cp -f fremd/tikz-uml.sty "$TEX_DIR"
+cp -f fremd/tikz-uml.pdf "$DOC_DIR"
 
-cp -f fremd/tikz-uml-activity.sty $HOME/texmf/tex
+cp -f fremd/tikz-uml-activity.sty "$TEX_DIR"
 
 if [ -f dokumentation.pdf ]; then
-  cp -f dokumentation.pdf $HOME/texmf/doc/bschlangaul.pdf
+  cp -f dokumentation.pdf "$DOC_DIR/bschlangaul.pdf"
 fi
