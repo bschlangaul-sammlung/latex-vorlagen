@@ -1,6 +1,21 @@
 # tex
 
-TeX- bzw. LaTeX- bzw. LuaLaTeX-Pakete und -Klassen zum Setzen der Aufgaben
+TeX- bzw. LaTeX- bzw. LuaLaTeX-Pakete und -Klassen zum Setzen der
+Aufgaben.
+
+Die in der Aufgabensammlung verwendeten Makros und Umgebungen der
+verschiedenen Klassen und Pakete sind
+[in einer PDF-Datei](https://github.com/bschlangaul-sammlung/tex/raw/main/dokumentation.pdf)
+dokumentiert.
+
+
+## LaTeX-Schnipsel
+
+LaTeX-Schnipsel zum Kopieren als kleine Hilfe beim Schreiben der
+Dokumentation.
+
+
+### weder ein Makro (macro) noch eine Umgebung (environment)
 
 ```latex
 %    \end{macrocode}
@@ -12,7 +27,7 @@ TeX- bzw. LaTeX- bzw. LuaLaTeX-Pakete und -Klassen zum Setzen der Aufgaben
 %    \begin{macrocode}
 ```
 
-# macro
+### Makro (macro)
 
 ```latex
 %    \end{macrocode}
@@ -32,7 +47,7 @@ TeX- bzw. LaTeX- bzw. LuaLaTeX-Pakete und -Klassen zum Setzen der Aufgaben
 %    \begin{macrocode}
 ```
 
-# environment
+### Umgebung (environment)
 
 ```latex
 %    \end{macrocode}
