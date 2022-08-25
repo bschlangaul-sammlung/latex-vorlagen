@@ -8,6 +8,10 @@ verschiedenen Klassen und Pakete sind
 [in einer PDF-Datei](https://github.com/bschlangaul-sammlung/tex/raw/main/dokumentation.pdf)
 dokumentiert.
 
+## Systemvoraussetzungen
+
+* [TeX Live](https://tug.org/texlive/)
+* [pygmentize](https://pygments.org)
 
 ## LaTeX-Schnipsel
 
