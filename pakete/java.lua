@@ -14,22 +14,22 @@
 -- https://raw.githubusercontent.com/hbschlang/Java-Didaktik-Beispiele/main/src/main/java/org/bschlangaul/graph/Knoten.java
 
 KONF = {
-  -- \LehramtInformatikRepository
+  -- \bPfadAufgaben
   tex_repo_lokaler_pfad = nil,
 
-  -- \LehramtInformatikGithubDomain
+  -- \bGithubDomain
   github_domain = 'https://github.com',
 
-  -- \LehramtInformatikGithubRawDomain
+  -- \bGithubRawDomain
   github_raw_domain = 'https://raw.githubusercontent.com',
 
-  -- \LehramtInformatikGithubTexRepo
+  -- \bGithubRepoNameAufgaben
   github_tex_repo = 'hbschlang/lehramt-informatik',
 
-  -- \LehramtInformatikGithubCodeRepo
+  -- \bGithubRepoNameJava
   github_code_repo = 'bschlangaul-sammlung/java',
 
-  -- \LehramtInformatikGitBranch
+  -- \bGitBranch
   git_branch = 'main',
 }
 

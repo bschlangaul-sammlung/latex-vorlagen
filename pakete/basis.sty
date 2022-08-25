@@ -7,7 +7,7 @@
 %    \end{macrocode}
 
 % Lade die Konfigurationsdatei.
-% |\def\LehramtInformatikRepository{/pfad/zum/repository}|
+% |\def\bPfadAufgaben{/pfad/zum/repository}|
 %    \begin{macrocode}
 \input /etc/bschlangaul.config.tex
 %    \end{macrocode}
@@ -376,10 +376,10 @@
 
 %    \begin{macrocode}
 \cs_new:Npn \_gib_github_url: {
-  \LehramtInformatikGithubDomain /
-  \LehramtInformatikGithubTexRepo /
+  \bGithubDomain /
+  \bGithubRepoNameAufgaben /
   blob /
-  \LehramtInformatikGitBranch /
+  \bGitBranch /
   \g_relativer_pfad_tl
 }
 %    \end{macrocode}

@@ -446,7 +446,7 @@ Zusammenfügen mehrerer Staatsexamen-Scans zu einer PDF-Datei.]
 
 % \begin{macro}{\bBindePdfEin}
 %    \begin{macrocode}
-\def\bBindePdfEin#1{\includepdf[pages={1-}]{\LehramtInformatikRepository/#1}}
+\def\bBindePdfEin#1{\includepdf[pages={1-}]{\bPfadAufgaben/#1}}
 %    \end{macrocode}
 % \end{macro}
 
@@ -540,7 +540,7 @@ mehreren Aufgaben zu einem Examen.]
 \def\bBindeAufgabeEin#1{
   \tl_gset:Nn \g_aufgabe_nr_tl { #1 }
   \input{
-    \LehramtInformatikRepository /
+    \bPfadAufgaben /
     Staatsexamen /
     \g_einzelpruefungs_nr_tl /
     \g_jahr_tl /
@@ -817,7 +817,7 @@ Binde Aufgaben in ein größeres Dokument ein.]
 % Repository einbinden.
 %    \begin{macrocode}
 \def\bAufgabe#1{
-  \input{\LehramtInformatikRepository/#1.tex}
+  \input{\bPfadAufgaben/#1.tex}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -827,7 +827,7 @@ Binde Aufgaben in ein größeres Dokument ein.]
 % z. B. |\bExamensAufgabe{46116/2015/09/Thema-2/Teilaufgabe-1/Aufgabe-3}|
 %    \begin{macrocode}
 \def\bExamensAufgabe#1{
-  \input{\LehramtInformatikRepository/Staatsexamen/#1.tex}
+  \input{\bPfadAufgaben/Staatsexamen/#1.tex}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -835,7 +835,7 @@ Binde Aufgaben in ein größeres Dokument ein.]
 % \begin{macro}{\bExamensAufgabeTTA}
 %    \begin{macrocode}
 \def\bExamensAufgabeTTA #1 / #2 / #3 : Thema #4 Teilaufgabe #5 Aufgabe #6 {
-  \input{\LehramtInformatikRepository/Staatsexamen/#1/#2/#3/Thema-#4/Teilaufgabe-#5/Aufgabe-#6.tex}
+  \input{\bPfadAufgaben/Staatsexamen/#1/#2/#3/Thema-#4/Teilaufgabe-#5/Aufgabe-#6.tex}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -843,7 +843,7 @@ Binde Aufgaben in ein größeres Dokument ein.]
 % \begin{macro}{\bExamensAufgabeTA}
 %    \begin{macrocode}
 \def\bExamensAufgabeTA #1 / #2 / #3 : Thema #4 Aufgabe #5 {
-  \input{\LehramtInformatikRepository/Staatsexamen/#1/#2/#3/Thema-#4/Aufgabe-#5.tex}
+  \input{\bPfadAufgaben/Staatsexamen/#1/#2/#3/Thema-#4/Aufgabe-#5.tex}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -851,7 +851,7 @@ Binde Aufgaben in ein größeres Dokument ein.]
 % \begin{macro}{\bExamensAufgabeA}
 %    \begin{macrocode}
 \def\bExamensAufgabeA #1 / #2 / #3 : Aufgabe #4 {
-  \input{\LehramtInformatikRepository/Staatsexamen/#1/#2/#3/Aufgabe-#4.tex}
+  \input{\bPfadAufgaben/Staatsexamen/#1/#2/#3/Aufgabe-#4.tex}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -1355,7 +1355,7 @@ Setzen der Aufgaben-Metadaten.]
 %    \end{macrocode}
 
 % Lade die Konfigurationsdatei.
-% |\def\LehramtInformatikRepository{/pfad/zum/repository}|
+% |\def\bPfadAufgaben{/pfad/zum/repository}|
 %    \begin{macrocode}
 \input /etc/bschlangaul.config.tex
 %    \end{macrocode}
@@ -1724,10 +1724,10 @@ Setzen der Aufgaben-Metadaten.]
 
 %    \begin{macrocode}
 \cs_new:Npn \_gib_github_url: {
-  \LehramtInformatikGithubDomain /
-  \LehramtInformatikGithubTexRepo /
+  \bGithubDomain /
+  \bGithubRepoNameAufgaben /
   blob /
-  \LehramtInformatikGitBranch /
+  \bGitBranch /
   \g_relativer_pfad_tl
 }
 %    \end{macrocode}
@@ -4366,12 +4366,12 @@ lassen]
 %    \begin{macrocode}
 \directlua{
   syntax = require('bschlangaul-java')
-  syntax.importiere_konfiguration('tex_repo_lokaler_pfad', '\LehramtInformatikRepository')
-  syntax.importiere_konfiguration('github_domain', '\LehramtInformatikGithubDomain')
-  syntax.importiere_konfiguration('github_raw_domain', '\LehramtInformatikGithubRawDomain')
-  syntax.importiere_konfiguration('github_tex_repo', '\LehramtInformatikGithubTexRepo')
-  syntax.importiere_konfiguration('github_code_repo', '\LehramtInformatikGithubCodeRepo')
-  syntax.importiere_konfiguration('git_branch', '\LehramtInformatikGitBranch')
+  syntax.importiere_konfiguration('tex_repo_lokaler_pfad', '\bPfadAufgaben')
+  syntax.importiere_konfiguration('github_domain', '\bGithubDomain')
+  syntax.importiere_konfiguration('github_raw_domain', '\bGithubRawDomain')
+  syntax.importiere_konfiguration('github_tex_repo', '\bGithubRepoNameAufgaben')
+  syntax.importiere_konfiguration('github_code_repo', '\bGithubRepoNameJava')
+  syntax.importiere_konfiguration('git_branch', '\bGitBranch')
 }
 %    \end{macrocode}
 
@@ -4962,16 +4962,16 @@ und Fußzeilen mit Hilfe des Pakets fancyhdr.]
   citestyle=authortitle,
   backend=biber,
 ]{biblatex}
-\addbibresource{\LehramtInformatikRepository/Quellen/10_DB.bib}
-\addbibresource{\LehramtInformatikRepository/Quellen/20_OOMUP.bib}
-\addbibresource{\LehramtInformatikRepository/Quellen/30_AUD.bib}
-\addbibresource{\LehramtInformatikRepository/Quellen/40_SOSY.bib}
-\addbibresource{\LehramtInformatikRepository/Quellen/60_FUMUP.bib}
-\addbibresource{\LehramtInformatikRepository/Quellen/70_THEO.bib}
-\addbibresource{\LehramtInformatikRepository/Quellen/80_DDI.bib}
-\addbibresource{\LehramtInformatikRepository/Quellen/Allgemein.bib}
-\addbibresource{\LehramtInformatikRepository/Quellen/Examen.bib}
-\addbibresource{\LehramtInformatikRepository/Quellen/Wikipedia.bib}
+\addbibresource{\bPfadAufgaben/Quellen/10_DB.bib}
+\addbibresource{\bPfadAufgaben/Quellen/20_OOMUP.bib}
+\addbibresource{\bPfadAufgaben/Quellen/30_AUD.bib}
+\addbibresource{\bPfadAufgaben/Quellen/40_SOSY.bib}
+\addbibresource{\bPfadAufgaben/Quellen/60_FUMUP.bib}
+\addbibresource{\bPfadAufgaben/Quellen/70_THEO.bib}
+\addbibresource{\bPfadAufgaben/Quellen/80_DDI.bib}
+\addbibresource{\bPfadAufgaben/Quellen/Allgemein.bib}
+\addbibresource{\bPfadAufgaben/Quellen/Examen.bib}
+\addbibresource{\bPfadAufgaben/Quellen/Wikipedia.bib}
 % To allow footnotes in the heading
 \RequirePackage[stable,multiple]{footmisc}
 %    \end{macrocode}

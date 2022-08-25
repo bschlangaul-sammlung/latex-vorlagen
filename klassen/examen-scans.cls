@@ -93,7 +93,7 @@ Zusammenfügen mehrerer Staatsexamen-Scans zu einer PDF-Datei.]
 
 % \begin{macro}{\bBindePdfEin}
 %    \begin{macrocode}
-\def\bBindePdfEin#1{\includepdf[pages={1-}]{\LehramtInformatikRepository/#1}}
+\def\bBindePdfEin#1{\includepdf[pages={1-}]{\bPfadAufgaben/#1}}
 %    \end{macrocode}
 % \end{macro}
 

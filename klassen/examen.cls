@@ -62,7 +62,7 @@ mehreren Aufgaben zu einem Examen.]
 \def\bBindeAufgabeEin#1{
   \tl_gset:Nn \g_aufgabe_nr_tl { #1 }
   \input{
-    \LehramtInformatikRepository /
+    \bPfadAufgaben /
     Staatsexamen /
     \g_einzelpruefungs_nr_tl /
     \g_jahr_tl /
