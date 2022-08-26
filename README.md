@@ -1,11 +1,11 @@
-# tex
+# LaTeX-Vorlagen
 
-TeX- bzw. LaTeX- bzw. LuaLaTeX-Pakete und -Klassen zum Setzen der
+TeX- bzw. LaTeX- bzw. LuaLaTeX-Vorlagen als Pakete und -Klassen zum Setzen der
 Aufgaben.
 
 Die in der Aufgabensammlung verwendeten Makros und Umgebungen der
 verschiedenen Klassen und Pakete sind
-[in einer PDF-Datei](https://github.com/bschlangaul-sammlung/tex/raw/main/dokumentation.pdf)
+[in einer PDF-Datei](https://github.com/bschlangaul-sammlung/latex-vorlagen/raw/main/dokumentation.pdf)
 dokumentiert.
 
 ## Systemvoraussetzungen
@@ -16,23 +16,9 @@ dokumentiert.
 
 ```tex
 % Bitte anpassen
-% Lokaler Pfad des Repositories: https://github.com/hbschlang/lehramt-informatik
-% z. B. \def\bPfadAufgaben{/home/hermine/repos/aufgaben_sammlung}
-\def\bPfadAufgaben{/absoluter/pfad/zum/aufgabe/repo}
-
-% Lokaler Pfad des Repositories: https://github.com/bschlangaul-sammlung/logo
-% z. B. \def\bPfadLogo{/home/hermine/repos/logo}
-\def\bPfadLogo{/absoluter/pfad/zum/logo/repo}
-
-% Muss nicht angepasst werden.
-\def\bGithubDomain{https://github.com}
-\def\bGithubRawDomain{https://raw.githubusercontent.com}
-\def\bGithubRepoNameAufgaben{hbschlang/lehramt-informatik}
-\def\bGithubRepoNameJava{bschlangaul-sammlung/java}
-\def\bGitBranch{main}
-\def\bAutorName{Hermine~Bschlangaul}
-\def\bAutorEmail{hermine.bschlangaul@gmx.net}
-\def\bSammlungTitel{Aufgaben-~und~Materialsammlung~„Lehramt~Informatik“}
+% Lokaler Pfad des Repositories: https://github.com/bschlangaul-sammlung/examens-aufgaben
+% z. B. ...Aufgaben{/home/hermine/repos/examens-aufgaben}
+\def\bPfadAufgaben{/absoluter/pfad/zum/aufgaben/repo}
 ```
 
 ## LaTeX-Schnipsel
