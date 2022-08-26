@@ -5,32 +5,33 @@
 -- src/main/java/org/bschlangaul/graph/Knoten.java
 
 -- Absoluter (Dateisystem)-Pfad:
--- /data/github/hbschlang/lehramt-informatik/src/main/java/org/bschlangaul/graph/Knoten.java
+-- /home/hermine/examens_aufgaben/.repos/java/src/main/java/org/bschlangaul/graph/Knoten.java
 
 -- Github-URL:
--- https://github.com/hbschlang/Java-Didaktik-Beispiele/blob/main/src/main/java/org/bschlangaul/graph/Knoten.java
+-- https://github.com/bschlangaul-sammlung/java-fuer-examens-aufgaben/blob/main/src/main/java/org/bschlangaul/graph/Knoten.java
 
 -- Github-Raw-URL:
--- https://raw.githubusercontent.com/hbschlang/Java-Didaktik-Beispiele/main/src/main/java/org/bschlangaul/graph/Knoten.java
+-- https://raw.githubusercontent.com/bschlangaul-sammlung/java-fuer-examens-aufgaben/main/src/main/java/org/bschlangaul/graph/Knoten.java
 
+-- wir durch die Funktion importiere_konfiguration() gesetzt
 KONF = {
   -- \bPfadAufgaben
   tex_repo_lokaler_pfad = nil,
 
   -- \bGithubDomain
-  github_domain = 'https://github.com',
+  github_domain = nil,
 
   -- \bGithubRawDomain
-  github_raw_domain = 'https://raw.githubusercontent.com',
+  github_raw_domain = nil,
 
   -- \bGithubRepoNameAufgaben
-  github_tex_repo = 'bschlangaul-sammlung/examens-aufgaben',
+  github_tex_repo = nil,
 
   -- \bGithubRepoNameJava
-  github_code_repo = 'bschlangaul-sammlung/java-fuer-examens-aufgaben',
+  github_code_repo = nil,
 
   -- \bGitBranch
-  git_branch = 'main',
+  git_branch = nil,
 }
 
 local luakeys = require('luakeys')
