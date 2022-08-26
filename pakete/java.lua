@@ -24,10 +24,10 @@ KONF = {
   github_raw_domain = 'https://raw.githubusercontent.com',
 
   -- \bGithubRepoNameAufgaben
-  github_tex_repo = 'hbschlang/lehramt-informatik',
+  github_tex_repo = 'bschlangaul-sammlung/examens-aufgaben',
 
   -- \bGithubRepoNameJava
-  github_code_repo = 'bschlangaul-sammlung/java',
+  github_code_repo = 'bschlangaul-sammlung/java-fuer-examens-aufgaben',
 
   -- \bGitBranch
   git_branch = 'main',
@@ -85,7 +85,7 @@ end
 -- @return Der absolute lokale Dateipfad
 local function gib_absoluten_pfad(relativer_pfad, ist_test)
   return KONF.tex_repo_lokaler_pfad ..
-    '/java/' ..
+    '/.repos/java/' ..
     gib_relativen_repo_pfad(relativer_pfad, ist_test)
 end
 
