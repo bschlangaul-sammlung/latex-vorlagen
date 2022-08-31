@@ -35,7 +35,9 @@ dokumentiert.
   Thematik = {Schnelle Suche von Schlüsseln: odd-ascending-even-descending-Folge},
   RelativerPfad = Staatsexamen/66115/2020/09/Thema-2/Teilaufgabe-2/Aufgabe-5.tex,
   ZitatSchluessel = examen:66115:2020:09,
+  % unbekannt, OCR, TeX-Fehler, nur Angabe, mit Lösung
   BearbeitungsStand = unbekannt, % Siehe https://github.com/bschlangaul-sammlung/kommandozeilen-werkzeug/blob/main/src/aufgabe.ts#L27-L38
+  % wahrscheinlich falsch, unbekannt, korrekt, korrekt und überprüft
   Korrektheit = unbekannt, % Siehe https://github.com/bschlangaul-sammlung/kommandozeilen-werkzeug/blob/main/src/aufgabe.ts#L47-L55
   Stichwoerter = {Binäre Suche}, % Siehe https://github.com/bschlangaul-sammlung/examens-aufgaben/blob/main/Stichwortverzeichnis.yml
   EinzelpruefungsNr = 66115,
