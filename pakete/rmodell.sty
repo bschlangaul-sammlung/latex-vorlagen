@@ -26,20 +26,20 @@ Datenbanken.]
 %    \end{macrocode}
 % \end{macro}
 
-% \begin{environment}{liRmodell}
-% |\begin{liRmodell} \end{liRmodell}|: Kleinere Schrift und
+% \begin{environment}{bRelationenModell}
+% |\begin{bRelationenModell} \end{bRelationenModell}|: Kleinere Schrift und
 % Schreibmaschinenschrift.
 %    \begin{macrocode}
-\def\li@Rmodell@Schrift{\footnotesize\ttfamily}
+\def\b@Rmodell@Schrift{\footnotesize\ttfamily}
 \ExplSyntaxOn
-\NewDocumentEnvironment { liRmodell }
+\NewDocumentEnvironment { bRelationenModell }
 { +b }
 {
   \medskip
   {
     \linespread{2}
     \setlength{\parindent}{0pt}
-    \li@Rmodell@Schrift#1
+    \b@Rmodell@Schrift#1
   }
   \medskip
 } {}
@@ -62,9 +62,9 @@ Datenbanken.]
 
 % \begin{macro}{\bAttribut}
 % \bMakroFaulenzer{a}{liAttribut}
-% |\bAttribut{text}|: Gleiche Schrift wie Umgebung |liRmodell|
+% |\bAttribut{text}|: Gleiche Schrift wie Umgebung |bRelationenModell|
 %    \begin{macrocode}
-\def\bAttribut#1{{\li@Rmodell@Schrift#1}}
+\def\bAttribut#1{{\b@Rmodell@Schrift#1}}
 %    \end{macrocode}
 % \end{macro}
 

@@ -48,7 +48,7 @@ Minimierungsalgorithmus von einem NEA zu einem DEA]
 % \end{macro}
 
 %    \begin{macrocode}
-\def\li@fussnote@text#1#2{
+\def\b@fussnote@text#1#2{
   \bFussnote{#1}
   \quad
   {\footnotesize #2}
@@ -58,7 +58,7 @@ Minimierungsalgorithmus von einem NEA zu einem DEA]
 % \begin{macro}{\bFussnoteEinsText}
 %    \begin{macrocode}
 \def\bFussnoteEinsText{
-  \li@fussnote@text{1}
+  \b@fussnote@text{1}
   {Paar aus End-/ Nicht-Endzustand kann nicht äquivalent sein.}
 }
 %    \end{macrocode}
@@ -67,7 +67,7 @@ Minimierungsalgorithmus von einem NEA zu einem DEA]
 % \begin{macro}{\bFussnoteZweiText}
 %    \begin{macrocode}
 \def\bFussnoteZweiText{
-  \li@fussnote@text{2}
+  \b@fussnote@text{2}
   {Test, ob man mit der Eingabe zu einem bereits markiertem Paar kommt.}
 }
 %    \end{macrocode}
@@ -76,7 +76,7 @@ Minimierungsalgorithmus von einem NEA zu einem DEA]
 % \begin{macro}{\bFussnoteDreiText}
 %    \begin{macrocode}
 \def\bFussnoteDreiText{
-  \li@fussnote@text{3}
+  \b@fussnote@text{3}
   {In weiteren Iterationen markierte Zustände.}
 }
 %    \end{macrocode}
@@ -85,7 +85,7 @@ Minimierungsalgorithmus von einem NEA zu einem DEA]
 % \begin{macro}{\bFussnoteVierText}
 %    \begin{macrocode}
 \def\bFussnoteVierText{
-  \li@fussnote@text{4}
+  \b@fussnote@text{4}
   {…}
 }
 %    \end{macrocode}

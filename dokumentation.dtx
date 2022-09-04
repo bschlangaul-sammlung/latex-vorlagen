@@ -396,7 +396,7 @@ Zusammenfügen mehrerer Staatsexamen-Scans zu einer PDF-Datei.]
 % \end{macro}
 
 %    \begin{macrocode}
-\def\li@SansFett#1#2{
+\def\b@SansFett#1#2{
   {
     #1
     \bfseries
@@ -414,11 +414,11 @@ Zusammenfügen mehrerer Staatsexamen-Scans zu einer PDF-Datei.]
   \vfill
   \begin{center}
   {
-    \li@SansFett{\LARGE}{\str_use:N \g_pruefungs_nummer} \\
+    \b@SansFett{\LARGE}{\str_use:N \g_pruefungs_nummer} \\
     \vspace{2cm}
-    \li@SansFett{\large}{\str_use:N \g_pruefungs_titel} \\
+    \b@SansFett{\large}{\str_use:N \g_pruefungs_titel} \\
     \vspace{5cm}
-    \li@SansFett{\Huge}{#1}
+    \b@SansFett{\Huge}{#1}
   }
   \end{center}
   \vfill
@@ -454,15 +454,15 @@ Zusammenfügen mehrerer Staatsexamen-Scans zu einer PDF-Datei.]
 \AtBeginDocument{
   \thispagestyle{empty}
   \bTitelSeite{
-    \li@SansFett{\Large}{Sammlung~aller~Staatsexamensaufgaben~der~Prüfungsnummer} \\
+    \b@SansFett{\Large}{Sammlung~aller~Staatsexamensaufgaben~der~Prüfungsnummer} \\
 
     \vspace{4cm}
 
-    \li@SansFett{\Huge}{\str_use:N \g_pruefungs_nummer} \\
+    \b@SansFett{\Huge}{\str_use:N \g_pruefungs_nummer} \\
 
     \vspace{4cm}
 
-    \li@SansFett{\LARGE}{\str_use:N \g_pruefungs_titel} \\
+    \b@SansFett{\LARGE}{\str_use:N \g_pruefungs_titel} \\
   }
 }
 %    \end{macrocode}
@@ -2189,7 +2189,7 @@ Hilfsmakros zum Setzen des Algorithmus zum Erreichen der Chomsky-Normalform]
 % \bMakroFaulenzer{erklaerung}{liChomskyErklaerung}
 %  Hoffmann Seite 180
 %    \begin{macrocode}
-\def\li@chomsky@erklaerung@texte#1{
+\def\b@chomsky@erklaerung@texte#1{
   \str_case:nn {#1} {
     %
     {1} {
@@ -2225,7 +2225,7 @@ Hilfsmakros zum Setzen des Algorithmus zum Erreichen der Chomsky-Normalform]
   {
     \itshape
     \footnotesize
-    \bParagraphMitLinien{\li@chomsky@erklaerung@texte{#1}}
+    \bParagraphMitLinien{\b@chomsky@erklaerung@texte{#1}}
   }
 }
 %    \end{macrocode}
@@ -2648,11 +2648,11 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 \RequirePackage{bschlangaul-uml}
 %    \end{macrocode}
 
-% \begin{macro}{\li@EntwurfsCodeAllgemein}
+% \begin{macro}{\b@EntwurfsCodeAllgemein}
 % Allgemeine Code-Beispiele zu den UML-Diagrammen und Stellvertretern
 %    \begin{macrocode}
 \RequirePackage{bschlangaul-syntax}
-\def\li@EntwurfsCode#1#2{
+\def\b@EntwurfsCode#1#2{
   \bJavaDatei{entwurfsmuster/#1/allgemein/#2}
 }
 %    \end{macrocode}
@@ -2723,9 +2723,9 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsAbstrakteFabrikCode}
 %    \begin{macrocode}
 \def\bEntwurfsAbstrakteFabrikCode{
-  \li@EntwurfsCode{abstrakte_fabrik}{Produkte}
-  \li@EntwurfsCode{abstrakte_fabrik}{AbstrakteFabrik}
-  \li@EntwurfsCode{abstrakte_fabrik}{Klient}
+  \b@EntwurfsCode{abstrakte_fabrik}{Produkte}
+  \b@EntwurfsCode{abstrakte_fabrik}{AbstrakteFabrik}
+  \b@EntwurfsCode{abstrakte_fabrik}{Klient}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -2802,10 +2802,10 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsAdapterCode}
 %    \begin{macrocode}
 \def\bEntwurfsAdapterCode{
-  \li@EntwurfsCode{adapter}{Dienst}
-  \li@EntwurfsCode{adapter}{Ziel}
-  \li@EntwurfsCode{adapter}{Adapter}
-  \li@EntwurfsCode{adapter}{Klient}
+  \b@EntwurfsCode{adapter}{Dienst}
+  \b@EntwurfsCode{adapter}{Ziel}
+  \b@EntwurfsCode{adapter}{Adapter}
+  \b@EntwurfsCode{adapter}{Klient}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -2899,12 +2899,12 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsBeobachterCode}
 %    \begin{macrocode}
 \def\bEntwurfsBeobachterCode{
-  \li@EntwurfsCode{beobachter}{Gegenstand}
-  \li@EntwurfsCode{beobachter}{KonkreterGegenstand}
-  \li@EntwurfsCode{beobachter}{Beobachter}
-  \li@EntwurfsCode{beobachter}{KonkreterBeobachterA}
-  \li@EntwurfsCode{beobachter}{KonkreterBeobachterB}
-  \li@EntwurfsCode{beobachter}{Klient}
+  \b@EntwurfsCode{beobachter}{Gegenstand}
+  \b@EntwurfsCode{beobachter}{KonkreterGegenstand}
+  \b@EntwurfsCode{beobachter}{Beobachter}
+  \b@EntwurfsCode{beobachter}{KonkreterBeobachterA}
+  \b@EntwurfsCode{beobachter}{KonkreterBeobachterB}
+  \b@EntwurfsCode{beobachter}{Klient}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -2951,12 +2951,12 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsDekoriererCode}
 %    \begin{macrocode}
 \def\bEntwurfsDekoriererCode{
-  \li@EntwurfsCode{dekorierer}{Komponente}
-  \li@EntwurfsCode{dekorierer}{KonkreteKomponente}
-  \li@EntwurfsCode{dekorierer}{Dekorierer}
-  \li@EntwurfsCode{dekorierer}{KonkreterDekoriererA}
-  \li@EntwurfsCode{dekorierer}{KonkreterDekoriererB}
-  \li@EntwurfsCode{dekorierer}{Klient}
+  \b@EntwurfsCode{dekorierer}{Komponente}
+  \b@EntwurfsCode{dekorierer}{KonkreteKomponente}
+  \b@EntwurfsCode{dekorierer}{Dekorierer}
+  \b@EntwurfsCode{dekorierer}{KonkreterDekoriererA}
+  \b@EntwurfsCode{dekorierer}{KonkreterDekoriererB}
+  \b@EntwurfsCode{dekorierer}{Klient}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -3081,7 +3081,7 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsEinzelstueckCode}
 %    \begin{macrocode}
 \def\bEntwurfsEinzelstueckCode{
-  \li@EntwurfsCode{einzelstueck}{Einzelstueck}
+  \b@EntwurfsCode{einzelstueck}{Einzelstueck}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -3348,10 +3348,10 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsStellvertreterCode}
 %    \begin{macrocode}
 \def\bEntwurfsStellvertreterCode{
-  \li@EntwurfsCode{stellvertreter}{Subjekt}
-  \li@EntwurfsCode{stellvertreter}{KonkretesSubjekt}
-  \li@EntwurfsCode{stellvertreter}{Stellvertreter}
-  \li@EntwurfsCode{stellvertreter}{Klient}
+  \b@EntwurfsCode{stellvertreter}{Subjekt}
+  \b@EntwurfsCode{stellvertreter}{KonkretesSubjekt}
+  \b@EntwurfsCode{stellvertreter}{Stellvertreter}
+  \b@EntwurfsCode{stellvertreter}{Klient}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -3421,8 +3421,8 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsZustandCode}
 %    \begin{macrocode}
 \def\bEntwurfsZustandCode{
-  \li@EntwurfsCode{zustand}{Kontext}
-  \li@EntwurfsCode{zustand}{Zustand}
+  \b@EntwurfsCode{zustand}{Kontext}
+  \b@EntwurfsCode{zustand}{Zustand}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -4254,35 +4254,35 @@ von Hanoi-Grafiken]
 % |\bHanoi{anzahl-scheiben}{gewicht-scheibe/turm-nr,gewicht-scheibe/turm-nr}|,
 % \zB: |\bHanoi{4}{4/1,3/1,2/3,1/2}|
 %    \begin{macrocode}
-\def\li@mset #1[#2]=#3{%
+\def\b@mset #1[#2]=#3{%
 	\expandafter\xdef\csname #1#2\endcsname{#3}
 }
-\def\li@mget #1[#2]{%
+\def\b@mget #1[#2]{%
 	\csname #1#2\endcsname
 }
-\def\li@minc #1[#2]+=#3{%
-	\pgfmathparse{\li@mget #1[#2]+#3}%
-	\li@mset #1[#2]=\pgfmathresult
+\def\b@minc #1[#2]+=#3{%
+	\pgfmathparse{\b@mget #1[#2]+#3}%
+	\b@mset #1[#2]=\pgfmathresult
 }
 
 \def\bHanoi#1#2{
-  \edef\li@numdiscs{#1}
-  \def\li@sequence{#2}
+  \edef\b@numdiscs{#1}
+  \def\b@sequence{#2}
   \begin{tikzpicture}[line width=4mm,brown!40,line cap=round,xscale=3]
     % init colors
     \foreach[count=\j] \c in {red,green!80!black,blue,orange,violet,gray,yellow!80!black,purple,cyan,black}
-    \li@mset col[\j]={\c};
+    \b@mset col[\j]={\c};
     % draw poles and init pole counters
     \foreach \j in {1,2,3}{
-      \li@mset pos[\j]=0
-      \draw (\j,-.5) -- +(0, .5 + .5*\li@numdiscs);
+      \b@mset pos[\j]=0
+      \draw (\j,-.5) -- +(0, .5 + .5*\b@numdiscs);
     }
     % draw base
     \draw (.5,-.5) -- +(3,0);
     % draw discs
-    \foreach[count=\k] \i/\j in \li@sequence{
-      \draw[draw={\li@mget col[\i]}] (\j,\li@mget pos[\j]) +(-.4*\i/\li@numdiscs,0) -- +(.4*\i/\li@numdiscs,0) node[pos=.5,white,font=\rmfamily] {\i};
-      \li@minc pos[\j]+={.5}
+    \foreach[count=\k] \i/\j in \b@sequence{
+      \draw[draw={\b@mget col[\i]}] (\j,\b@mget pos[\j]) +(-.4*\i/\b@numdiscs,0) -- +(.4*\i/\b@numdiscs,0) node[pos=.5,white,font=\rmfamily] {\i};
+      \b@minc pos[\j]+={.5}
     }
   \end{tikzpicture}
 }
@@ -4406,7 +4406,7 @@ lassen]
 % \end{macro}
 
 %    \begin{macrocode}
-\def\li@GithubLink#1#2
+\def\b@GithubLink#1#2
 {
   \begin{flushright}
     \tiny
@@ -4427,7 +4427,7 @@ lassen]
       syntax.drucke_absoluten_pfad('#2', false)
     }
   }
-  \li@GithubLink
+  \b@GithubLink
     {\directlua{syntax.drucke_github_url('#2', false)}}
     {\directlua{syntax.drucke_relativen_repo_pfad('#2', false)}}
 }
@@ -4445,7 +4445,7 @@ lassen]
       syntax.drucke_absoluten_pfad('#2', true)
     }
   }
-  \li@GithubLink
+  \b@GithubLink
     {\directlua{syntax.drucke_github_url('#2', true)}}
     {\directlua{syntax.drucke_relativen_repo_pfad('#2', true)}}
 }
@@ -4466,7 +4466,7 @@ lassen]
     }
   }
 
-  \li@GithubLink
+  \b@GithubLink
   {\directlua{syntax.drucke_github_examens_url('#2', '#3', '#4', '#5')}}
   {\directlua{syntax.drucke_relativen_examens_repo_pfad('#2', '#3', '#4', '#5')}}
 }
@@ -5919,7 +5919,7 @@ Minimierungsalgorithmus von einem NEA zu einem DEA]
 % \end{macro}
 
 %    \begin{macrocode}
-\def\li@fussnote@text#1#2{
+\def\b@fussnote@text#1#2{
   \bFussnote{#1}
   \quad
   {\footnotesize #2}
@@ -5929,7 +5929,7 @@ Minimierungsalgorithmus von einem NEA zu einem DEA]
 % \begin{macro}{\bFussnoteEinsText}
 %    \begin{macrocode}
 \def\bFussnoteEinsText{
-  \li@fussnote@text{1}
+  \b@fussnote@text{1}
   {Paar aus End-/ Nicht-Endzustand kann nicht äquivalent sein.}
 }
 %    \end{macrocode}
@@ -5938,7 +5938,7 @@ Minimierungsalgorithmus von einem NEA zu einem DEA]
 % \begin{macro}{\bFussnoteZweiText}
 %    \begin{macrocode}
 \def\bFussnoteZweiText{
-  \li@fussnote@text{2}
+  \b@fussnote@text{2}
   {Test, ob man mit der Eingabe zu einem bereits markiertem Paar kommt.}
 }
 %    \end{macrocode}
@@ -5947,7 +5947,7 @@ Minimierungsalgorithmus von einem NEA zu einem DEA]
 % \begin{macro}{\bFussnoteDreiText}
 %    \begin{macrocode}
 \def\bFussnoteDreiText{
-  \li@fussnote@text{3}
+  \b@fussnote@text{3}
   {In weiteren Iterationen markierte Zustände.}
 }
 %    \end{macrocode}
@@ -5956,7 +5956,7 @@ Minimierungsalgorithmus von einem NEA zu einem DEA]
 % \begin{macro}{\bFussnoteVierText}
 %    \begin{macrocode}
 \def\bFussnoteVierText{
-  \li@fussnote@text{4}
+  \b@fussnote@text{4}
   {…}
 }
 %    \end{macrocode}
@@ -6814,20 +6814,20 @@ Datenbanken.]
 %    \end{macrocode}
 % \end{macro}
 
-% \begin{environment}{liRmodell}
-% |\begin{liRmodell} \end{liRmodell}|: Kleinere Schrift und
+% \begin{environment}{bRelationenModell}
+% |\begin{bRelationenModell} \end{bRelationenModell}|: Kleinere Schrift und
 % Schreibmaschinenschrift.
 %    \begin{macrocode}
-\def\li@Rmodell@Schrift{\footnotesize\ttfamily}
+\def\b@Rmodell@Schrift{\footnotesize\ttfamily}
 \ExplSyntaxOn
-\NewDocumentEnvironment { liRmodell }
+\NewDocumentEnvironment { bRelationenModell }
 { +b }
 {
   \medskip
   {
     \linespread{2}
     \setlength{\parindent}{0pt}
-    \li@Rmodell@Schrift#1
+    \b@Rmodell@Schrift#1
   }
   \medskip
 } {}
@@ -6850,9 +6850,9 @@ Datenbanken.]
 
 % \begin{macro}{\bAttribut}
 % \bMakroFaulenzer{a}{liAttribut}
-% |\bAttribut{text}|: Gleiche Schrift wie Umgebung |liRmodell|
+% |\bAttribut{text}|: Gleiche Schrift wie Umgebung |bRelationenModell|
 %    \begin{macrocode}
-\def\bAttribut#1{{\li@Rmodell@Schrift#1}}
+\def\bAttribut#1{{\b@Rmodell@Schrift#1}}
 %    \end{macrocode}
 % \end{macro}
 
@@ -7391,7 +7391,7 @@ Relation in die 3. Normalform]
 % \begin{macro}{\bSyntheseErklaerung}
 % \bMakroFaulenzer{erklaerung}{liSyntheseErklaerung}
 %    \begin{macrocode}
-\def\li@synthese@erklaerung@texte#1
+\def\b@synthese@erklaerung@texte#1
 {
   \str_case:nn {#1} {
     {1} {
@@ -7453,7 +7453,7 @@ Relation in die 3. Normalform]
   {
     \itshape
     \footnotesize
-    \bParagraphMitLinien{\li@synthese@erklaerung@texte{#1}}
+    \bParagraphMitLinien{\b@synthese@erklaerung@texte{#1}}
   }
 }
 %    \end{macrocode}

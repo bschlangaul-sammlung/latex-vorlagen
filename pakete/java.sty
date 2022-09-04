@@ -58,7 +58,7 @@
 % \end{macro}
 
 %    \begin{macrocode}
-\def\li@GithubLink#1#2
+\def\b@GithubLink#1#2
 {
   \begin{flushright}
     \tiny
@@ -79,7 +79,7 @@
       syntax.drucke_absoluten_pfad('#2', false)
     }
   }
-  \li@GithubLink
+  \b@GithubLink
     {\directlua{syntax.drucke_github_url('#2', false)}}
     {\directlua{syntax.drucke_relativen_repo_pfad('#2', false)}}
 }
@@ -97,7 +97,7 @@
       syntax.drucke_absoluten_pfad('#2', true)
     }
   }
-  \li@GithubLink
+  \b@GithubLink
     {\directlua{syntax.drucke_github_url('#2', true)}}
     {\directlua{syntax.drucke_relativen_repo_pfad('#2', true)}}
 }
@@ -119,7 +119,7 @@
     }
   }
 
-  \li@GithubLink
+  \b@GithubLink
   {\directlua{syntax.drucke_github_examens_url('#2', '#3', '#4', '#5')}}
   {\directlua{syntax.drucke_relativen_examens_repo_pfad('#2', '#3', '#4', '#5')}}
 }

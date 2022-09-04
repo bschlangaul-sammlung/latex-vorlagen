@@ -42,7 +42,7 @@ Zusammenfügen mehrerer Staatsexamen-Scans zu einer PDF-Datei.]
 % \end{macro}
 
 %    \begin{macrocode}
-\def\li@SansFett#1#2{
+\def\b@SansFett#1#2{
   {
     #1
     \bfseries
@@ -60,11 +60,11 @@ Zusammenfügen mehrerer Staatsexamen-Scans zu einer PDF-Datei.]
   \vfill
   \begin{center}
   {
-    \li@SansFett{\LARGE}{\str_use:N \g_pruefungs_nummer} \\
+    \b@SansFett{\LARGE}{\str_use:N \g_pruefungs_nummer} \\
     \vspace{2cm}
-    \li@SansFett{\large}{\str_use:N \g_pruefungs_titel} \\
+    \b@SansFett{\large}{\str_use:N \g_pruefungs_titel} \\
     \vspace{5cm}
-    \li@SansFett{\Huge}{#1}
+    \b@SansFett{\Huge}{#1}
   }
   \end{center}
   \vfill
@@ -100,15 +100,15 @@ Zusammenfügen mehrerer Staatsexamen-Scans zu einer PDF-Datei.]
 \AtBeginDocument{
   \thispagestyle{empty}
   \bTitelSeite{
-    \li@SansFett{\Large}{Sammlung~aller~Staatsexamensaufgaben~der~Prüfungsnummer} \\
+    \b@SansFett{\Large}{Sammlung~aller~Staatsexamensaufgaben~der~Prüfungsnummer} \\
 
     \vspace{4cm}
 
-    \li@SansFett{\Huge}{\str_use:N \g_pruefungs_nummer} \\
+    \b@SansFett{\Huge}{\str_use:N \g_pruefungs_nummer} \\
 
     \vspace{4cm}
 
-    \li@SansFett{\LARGE}{\str_use:N \g_pruefungs_titel} \\
+    \b@SansFett{\LARGE}{\str_use:N \g_pruefungs_titel} \\
   }
 }
 %    \end{macrocode}

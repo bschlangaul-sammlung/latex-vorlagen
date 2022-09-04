@@ -106,7 +106,7 @@ Hilfsmakros zum Setzen des Algorithmus zum Erreichen der Chomsky-Normalform]
 % \bMakroFaulenzer{erklaerung}{liChomskyErklaerung}
 %  Hoffmann Seite 180
 %    \begin{macrocode}
-\def\li@chomsky@erklaerung@texte#1{
+\def\b@chomsky@erklaerung@texte#1{
   \str_case:nn {#1} {
     %
     {1} {
@@ -142,7 +142,7 @@ Hilfsmakros zum Setzen des Algorithmus zum Erreichen der Chomsky-Normalform]
   {
     \itshape
     \footnotesize
-    \bParagraphMitLinien{\li@chomsky@erklaerung@texte{#1}}
+    \bParagraphMitLinien{\b@chomsky@erklaerung@texte{#1}}
   }
 }
 %    \end{macrocode}

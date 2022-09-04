@@ -29,11 +29,11 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 \RequirePackage{bschlangaul-uml}
 %    \end{macrocode}
 
-% \begin{macro}{\li@EntwurfsCodeAllgemein}
+% \begin{macro}{\b@EntwurfsCodeAllgemein}
 % Allgemeine Code-Beispiele zu den UML-Diagrammen und Stellvertretern
 %    \begin{macrocode}
 \RequirePackage{bschlangaul-syntax}
-\def\li@EntwurfsCode#1#2{
+\def\b@EntwurfsCode#1#2{
   \bJavaDatei{entwurfsmuster/#1/allgemein/#2}
 }
 %    \end{macrocode}
@@ -104,9 +104,9 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsAbstrakteFabrikCode}
 %    \begin{macrocode}
 \def\bEntwurfsAbstrakteFabrikCode{
-  \li@EntwurfsCode{abstrakte_fabrik}{Produkte}
-  \li@EntwurfsCode{abstrakte_fabrik}{AbstrakteFabrik}
-  \li@EntwurfsCode{abstrakte_fabrik}{Klient}
+  \b@EntwurfsCode{abstrakte_fabrik}{Produkte}
+  \b@EntwurfsCode{abstrakte_fabrik}{AbstrakteFabrik}
+  \b@EntwurfsCode{abstrakte_fabrik}{Klient}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -183,10 +183,10 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsAdapterCode}
 %    \begin{macrocode}
 \def\bEntwurfsAdapterCode{
-  \li@EntwurfsCode{adapter}{Dienst}
-  \li@EntwurfsCode{adapter}{Ziel}
-  \li@EntwurfsCode{adapter}{Adapter}
-  \li@EntwurfsCode{adapter}{Klient}
+  \b@EntwurfsCode{adapter}{Dienst}
+  \b@EntwurfsCode{adapter}{Ziel}
+  \b@EntwurfsCode{adapter}{Adapter}
+  \b@EntwurfsCode{adapter}{Klient}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -280,12 +280,12 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsBeobachterCode}
 %    \begin{macrocode}
 \def\bEntwurfsBeobachterCode{
-  \li@EntwurfsCode{beobachter}{Gegenstand}
-  \li@EntwurfsCode{beobachter}{KonkreterGegenstand}
-  \li@EntwurfsCode{beobachter}{Beobachter}
-  \li@EntwurfsCode{beobachter}{KonkreterBeobachterA}
-  \li@EntwurfsCode{beobachter}{KonkreterBeobachterB}
-  \li@EntwurfsCode{beobachter}{Klient}
+  \b@EntwurfsCode{beobachter}{Gegenstand}
+  \b@EntwurfsCode{beobachter}{KonkreterGegenstand}
+  \b@EntwurfsCode{beobachter}{Beobachter}
+  \b@EntwurfsCode{beobachter}{KonkreterBeobachterA}
+  \b@EntwurfsCode{beobachter}{KonkreterBeobachterB}
+  \b@EntwurfsCode{beobachter}{Klient}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -332,12 +332,12 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsDekoriererCode}
 %    \begin{macrocode}
 \def\bEntwurfsDekoriererCode{
-  \li@EntwurfsCode{dekorierer}{Komponente}
-  \li@EntwurfsCode{dekorierer}{KonkreteKomponente}
-  \li@EntwurfsCode{dekorierer}{Dekorierer}
-  \li@EntwurfsCode{dekorierer}{KonkreterDekoriererA}
-  \li@EntwurfsCode{dekorierer}{KonkreterDekoriererB}
-  \li@EntwurfsCode{dekorierer}{Klient}
+  \b@EntwurfsCode{dekorierer}{Komponente}
+  \b@EntwurfsCode{dekorierer}{KonkreteKomponente}
+  \b@EntwurfsCode{dekorierer}{Dekorierer}
+  \b@EntwurfsCode{dekorierer}{KonkreterDekoriererA}
+  \b@EntwurfsCode{dekorierer}{KonkreterDekoriererB}
+  \b@EntwurfsCode{dekorierer}{Klient}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -462,7 +462,7 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsEinzelstueckCode}
 %    \begin{macrocode}
 \def\bEntwurfsEinzelstueckCode{
-  \li@EntwurfsCode{einzelstueck}{Einzelstueck}
+  \b@EntwurfsCode{einzelstueck}{Einzelstueck}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -729,10 +729,10 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsStellvertreterCode}
 %    \begin{macrocode}
 \def\bEntwurfsStellvertreterCode{
-  \li@EntwurfsCode{stellvertreter}{Subjekt}
-  \li@EntwurfsCode{stellvertreter}{KonkretesSubjekt}
-  \li@EntwurfsCode{stellvertreter}{Stellvertreter}
-  \li@EntwurfsCode{stellvertreter}{Klient}
+  \b@EntwurfsCode{stellvertreter}{Subjekt}
+  \b@EntwurfsCode{stellvertreter}{KonkretesSubjekt}
+  \b@EntwurfsCode{stellvertreter}{Stellvertreter}
+  \b@EntwurfsCode{stellvertreter}{Klient}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -802,8 +802,8 @@ Hilfsmakros zum Setzen von Entwurfsmustern / Design Patterns]
 % \begin{macro}{\bEntwurfsZustandCode}
 %    \begin{macrocode}
 \def\bEntwurfsZustandCode{
-  \li@EntwurfsCode{zustand}{Kontext}
-  \li@EntwurfsCode{zustand}{Zustand}
+  \b@EntwurfsCode{zustand}{Kontext}
+  \b@EntwurfsCode{zustand}{Zustand}
 }
 %    \end{macrocode}
 % \end{macro}

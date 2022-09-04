@@ -130,7 +130,7 @@ Relation in die 3. Normalform]
 % \begin{macro}{\bSyntheseErklaerung}
 % \bMakroFaulenzer{erklaerung}{liSyntheseErklaerung}
 %    \begin{macrocode}
-\def\li@synthese@erklaerung@texte#1
+\def\b@synthese@erklaerung@texte#1
 {
   \str_case:nn {#1} {
     {1} {
@@ -192,7 +192,7 @@ Relation in die 3. Normalform]
   {
     \itshape
     \footnotesize
-    \bParagraphMitLinien{\li@synthese@erklaerung@texte{#1}}
+    \bParagraphMitLinien{\b@synthese@erklaerung@texte{#1}}
   }
 }
 %    \end{macrocode}
