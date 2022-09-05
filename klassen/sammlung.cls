@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{bschlangaul-haupt}[2019/10/27 Klasse zum
-Setzen der Haupt-Datei, Bschlangaul-Sammlung.tex d.h. des wichtigsten
-Dokuments, das alles zusammenfasst.]
+\ProvidesClass{bschlangaul-sammlung}[2019/10/27 Klasse zum
+Setzen von Aufgabensammlung, d.h. Dokumenten, in denen sowohl sonstige
+Aufgaben als auch Examensaufgaben zusammengefasst werden.]
 %    \end{macrocode}
 
 % Lade die wichtigsten Pakete. Formatierung muss vor literatur sein, sonst Option clash
