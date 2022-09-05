@@ -39,11 +39,44 @@ Aufgaben als auch Examensaufgaben zusammengefasst werden.]
 
 % Breiterer rechter Rand für die Indexes
 %    \begin{macrocode}
-\geometry{
+\geometry
+{
   right = 3cm,
   marginparwidth = 2.8cm,
 }
 %    \end{macrocode}
+
+% \begin{macro}{\bAufgabe}
+% Überschreibt Makro-Definition in der Datei aufgaben-einbinden.sty
+%    \begin{macrocode}
+\def\bAufgabe #1
+{
+  \def\bAufgabenMetadaten ##1
+  {
+    \bMetaSetze{##1}
+    \subsection{Übungsaufgabe ~ „\g_thematik_tl ~ (\g_stichwoerter_tl)“}
+  }
+  \input{\bPfadAufgaben/#1.tex}
+  \clearpage
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\bExamensAufgabe}
+% Überschreibt Makro-Definition in der Datei aufgaben-einbinden.sty
+%    \begin{macrocode}
+\def\bExamensAufgabe #1
+{
+  \def\bAufgabenMetadaten ##1
+  {
+    \bMetaSetze{##1}
+    \subsection{Examensaufgabe ~ „\g_thematik_tl ~ (\g_referenz_tl)“}
+  }
+  \input{\bPfadAufgaben/Staatsexamen/#1.tex}
+  \clearpage
+}
+%    \end{macrocode}
+% \end{macro}
 
 %    \begin{macrocode}
 \AddToHook { begindocument }
@@ -53,12 +86,11 @@ Aufgaben als auch Examensaufgaben zusammengefasst werden.]
   {
     {
       \Huge
-      Die~komplette~Sammlung
+      Die ~ komplette ~ Sammlung
     }
-
   }
   {
-    Alle~Aufgaben
+    Alle ~ Übungs- ~ und ~ Examensaufgaben
   }
 
   \tableofcontents

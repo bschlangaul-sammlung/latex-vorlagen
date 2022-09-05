@@ -157,22 +157,27 @@
 % Initialisierung der globalen Token-List-Variablen |\g_***_tl|.
 % |auf| steht für Aufgabe.
 %    \begin{macrocode}
-\clist_map_inline:Nn \g_schluessel_clist {
+\clist_map_inline:Nn \g_schluessel_clist
+{
   \tl_new:c {g_auf_#1_tl}
 }
 %    \end{macrocode}
 
 % Funktion über alle globalen Token-List-Variablen zurückzusetzten.
 %    \begin{macrocode}
-\cs_new:Npn \_setze_variablen_zurueck: {
-  \clist_map_inline:Nn \g_schluessel_clist {
+\cs_new:Npn \_setze_variablen_zurueck:
+{
+  \clist_map_inline:Nn \g_schluessel_clist
+  {
     \tl_clear:c {g_auf_##1_tl}
   }
 }
 %    \end{macrocode}
 
 % Die einzelnen Schlüssel sind im Interface |AufgabenMetadaten| in der
-% Typescript-Datei |.scripts/nodejs/src/aufgaben.ts| erklärt.
+% Typescript-Datei
+% https://github.com/bschlangaul-sammlung/kommandozeilen-werkzeug/blob/main/src/aufgabe.ts
+% erklärt.
 %    \begin{macrocode}
 \keys_define:nn { aufgabenmetadaten }
 {
@@ -202,7 +207,8 @@
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_gset:Npn \_setze_relativen_pfad: {
+\cs_gset:Npn \_setze_relativen_pfad:
+{
   \tl_if_empty:NTF \g_relativer_pfad_tl
   {
     \bool_if:nTF
@@ -229,13 +235,15 @@
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_set:Nn \trenner: {
+\cs_set:Nn \trenner:
+{
   \, / \,
 }
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_gset:Npn \gib_jahreszeit_durch_monat: #1 {
+\cs_gset:Npn \gib_jahreszeit_durch_monat: #1
+{
   \str_case_e:nnTF { #1 }
   {
     { 3 } { Frühjahr }
@@ -298,7 +306,8 @@
 
 % „Einzelprüfungsnummer / Jahr / Jahreszeit“ mit Trennzeichen
 %    \begin{macrocode}
-\cs_gset:Npn \einzelpruefungsnr_jahr_jahreszeit: {
+\cs_gset:Npn \einzelpruefungsnr_jahr_jahreszeit:
+{
   \g_einzelpruefungs_nr_tl
 
   \trenner:
@@ -313,7 +322,8 @@
 
 % Thema 1 / Teilaufgabe 2 / Aufgabe 3
 %    \begin{macrocode}
-\cs_gset:Npn \thema_teil_aufgabe: {
+\cs_gset:Npn \thema_teil_aufgabe:
+{
   \tl_if_empty:NTF \g_thema_nr_tl {} {
     Thema ~ \g_thema_nr_tl \trenner:
   }
@@ -332,10 +342,11 @@
 % Examensaufgabe, wird auch eine Titel zurückgegeben. Für die
 % Kopfzeile gedacht.
 %    \begin{macrocode}
-\cs_new:Npn \aufgabenpfad_lang: {
+\cs_new:Npn \aufgabenpfad_lang:
+{
   \tl_if_empty:NTF \g_einzelpruefungs_nr_tl
   {
-    \g_titel_tl
+    \g_thematik_tl
   }
   {
     \einzelpruefungsnr_jahr_jahreszeit:
@@ -387,7 +398,8 @@
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_new:Npn \_gib_github_url: {
+\cs_new:Npn \_gib_github_url:
+{
   \bGithubDomain /
   \bGithubRepoNameAufgaben /
   blob /
@@ -397,7 +409,8 @@
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_new:Npn \_gib_github_url_href: {
+\cs_new:Npn \_gib_github_url_href:
+{
   \tl_if_empty:NTF \g_relativer_pfad_tl {} {
     \url{ \_gib_github_url: }
   }
@@ -405,7 +418,8 @@
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_new:Npn \_gib_aufgaben_titel: {
+\cs_new:Npn \_gib_aufgaben_titel:
+{
   \g_titel_tl
 
   \tl_if_empty:NTF \g_thematik_tl
@@ -474,7 +488,8 @@
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_new:Npn \keine_einrueckung: {
+\cs_new:Npn \keine_einrueckung:
+{
   \par
   \@afterindentfalse
   \@afterheading
