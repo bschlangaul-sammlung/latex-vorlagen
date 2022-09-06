@@ -159,7 +159,7 @@
 %    \begin{macrocode}
 \clist_map_inline:Nn \g_schluessel_clist
 {
-  \tl_new:c {g_auf_#1_tl}
+  \tl_new:c {g_#1_tl}
 }
 %    \end{macrocode}
 
@@ -169,7 +169,7 @@
 {
   \clist_map_inline:Nn \g_schluessel_clist
   {
-    \tl_clear:c {g_auf_##1_tl}
+    \tl_clear:c {g_##1_tl}
   }
 }
 %    \end{macrocode}
