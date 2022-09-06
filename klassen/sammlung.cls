@@ -24,6 +24,11 @@ Aufgaben als auch Examensaufgaben zusammengefasst werden.]
 \bLadeAllePakete
 %    \end{macrocode}
 
+% Nochmals makros laden, damit zum Beispiel dh nicht überschrieben wird.
+%    \begin{macrocode}
+\bLadePakete{makros}
+%    \end{macrocode}
+
 % Komischer Option-Clash deshalb ganz am Ende, für die Silbentrennung
 %    \begin{macrocode}
 \RequirePackage[ngerman]{babel}
@@ -46,6 +51,18 @@ Aufgaben als auch Examensaufgaben zusammengefasst werden.]
 }
 %    \end{macrocode}
 
+%    \begin{macrocode}
+\cs_new:Npn \url_tex_quelltext:
+{
+  \begin{spacing}{1}
+    \tiny
+    \noindent
+    \bMetaQuelltext\\
+    \_gib_github_url_href:
+  \end{spacing}
+}
+%    \end{macrocode}
+
 % \begin{macro}{\bAufgabe}
 % Überschreibt Makro-Definition in der Datei aufgaben-einbinden.sty
 %    \begin{macrocode}
@@ -54,9 +71,11 @@ Aufgaben als auch Examensaufgaben zusammengefasst werden.]
   \def\bAufgabenMetadaten ##1
   {
     \bMetaSetze{##1}
-    \subsection{Übungsaufgabe ~ „\g_thematik_tl ~ (\g_stichwoerter_tl)“}
+    \subsection{Übungsaufgabe ~ „\g_thematik_tl“ ~ (\g_stichwoerter_tl)}
   }
   \input{\bPfadAufgaben/#1.tex}
+
+  \url_tex_quelltext:
   \clearpage
 }
 %    \end{macrocode}
@@ -70,9 +89,11 @@ Aufgaben als auch Examensaufgaben zusammengefasst werden.]
   \def\bAufgabenMetadaten ##1
   {
     \bMetaSetze{##1}
-    \subsection{Examensaufgabe ~ „\g_thematik_tl ~ (\g_referenz_tl)“}
+    \subsection{Examensaufgabe ~ „\g_thematik_tl“ ~ (\g_referenz_tl)}
   }
   \input{\bPfadAufgaben/Staatsexamen/#1.tex}
+
+  \url_tex_quelltext:
   \clearpage
 }
 %    \end{macrocode}
