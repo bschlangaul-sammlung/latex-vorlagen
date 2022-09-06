@@ -80,6 +80,34 @@ ER-Diagrammen]
 %   edge node {$\bigcup$} (union);
 % \end{verbatim}
 
+% \subsubsection{Verkleinern und Vergrößern}
+% https://tex.stackexchange.com/a/4340
+
+% \begin{verbatim}
+% \begin{center}
+% \resizebox{0.7\textwidth}{!}{
+% \begin{tikzpicture}[scale=1.5]
+% \node[entity] (Fahrer) at (0,0) {Fahrer};
+% \node[entity] (Fahrzeug) at (5,0) {Fahrzeug};
+% \node[entity] (Abteilung) at (10,0) {Abteilung};
+% \node[entity] (Garage) at (5,-4) {Garage};
+%
+% \node[relationship,align=center] (Fahrerlaubnis) at (2.5,0) {Fahrer-\\laubnis}
+%   edge (Fahrer)
+%   edge (Fahrzeug);
+%
+% \node[relationship] (gehoert) at (7.5,0) {gehoert}
+%   edge (Fahrzeug)
+%   edge (Abteilung);
+%
+% \node[relationship] (stehtIn) at (5,-2) {stehtIn}
+%   edge (Fahrzeug)
+%   edge (Garage);
+% \end{tikzpicture}
+% }
+% \end{center}
+% \end{verbatim}
+
 %    \begin{macrocode}
 \RequirePackage{soul}
 %    \end{macrocode}
