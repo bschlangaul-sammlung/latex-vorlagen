@@ -3831,7 +3831,6 @@ $\bMengeOhneMathe{#1}$%
     \, #3 \,
   \}$
 }
-\ExplSyntaxOff
 %    \end{macrocode}
 % \end{macro}
 
@@ -3839,15 +3838,13 @@ $\bMengeOhneMathe{#1}$%
 % Link zur flaci.com Website: |\bFlaci{Grxk1oczg}|: \bFlaci{Grxk1oczg}
 %    \begin{macrocode}
 \def\bFlaci#1{%
-  \par
-  {%
-    \scriptsize
-    Der Automat auf flaci.com (FLACI: Formale Sprachen, abstrakte
-    Automaten, Compiler und Interpreter) Ein Projekt der Hochschule
-    Zittau/Görlitz und der Pädagogischen Hochschule Schwyz:
+  \begin{space}{1}
+    \tiny
+    Der ~ Automat ~ auf ~ flaci.com ~ (FLACI: ~ Formale Sprachen, ~ abstrakte ~
+    Automaten, ~ Compiler ~ und ~ Interpreter) ~ Ein ~ Projekt ~ der ~ Hochschule ~
+    Zittau/Görlitz ~ und ~ der ~ Pädagogischen ~ Hochschule ~ Schwyz: ~
     \href{https://flaci.com/#1}{flaci.com/#1}%
-  }%
-  \par
+  \end{space}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -3866,7 +3863,6 @@ $\bMengeOhneMathe{#1}$%
 % \end{itemize}
 %
 %    \begin{macrocode}
-\ExplSyntaxOn
 \NewDocumentCommand {\bGrammatik} { O{G} m } {
   \tl_set:Nn \l_variablen_tl {V}
   \tl_set:Nn \l_alphabet_tl {\Sigma}
