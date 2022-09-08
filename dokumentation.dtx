@@ -342,6 +342,13 @@ Unterklasse benutzt werden soll.]
 \ProcessKeysOptions { klassen-setup }
 %    \end{macrocode}
 
+% Damit die Aufgaben mehrmals kompiliert werden können, ohne dass sich
+% die PDF-Datei ändert. So kommen nur inhaltliche Änderung im
+% Git-Respository an https://tex.stackexchange.com/a/313605
+%    \begin{macrocode}
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
+%    \end{macrocode}
+
 %    \begin{macrocode}
 \ExplSyntaxOff
 %    \end{macrocode}
@@ -353,8 +360,7 @@ Unterklasse benutzt werden soll.]
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{bschlangaul-examen-scans}[2021/01/08 Zum
-Zusammenfügen mehrerer Staatsexamen-Scans zu einer PDF-Datei.]
-\LoadClass[a4paper,oneside]{book}
+Zusammenfügen mehrerer Examen-Scans zu einer PDF-Datei.]
 %    \end{macrocode}
 
 %    \begin{macrocode}
@@ -541,7 +547,7 @@ mehreren Aufgaben zu einem Examen.]
   \tl_gset:Nn \g_aufgabe_nr_tl { #1 }
   \input{
     \bPfadAufgaben /
-    Staatsexamen /
+    Examen /
     \g_einzelpruefungs_nr_tl /
     \g_jahr_tl /
     \g_monat_tl /
@@ -641,12 +647,12 @@ mehreren Aufgaben zu einem Examen.]
 %    \begin{macrocode}
 
 %    \end{macrocode}
-% \subsection{haupt.cls}
+% \subsection{sammlung.cls}
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{bschlangaul-haupt}[2019/10/27 Klasse zum
-Setzen der Haupt-Datei, Bschlangaul-Sammlung.tex d.h. des wichtigsten
-Dokuments, das alles zusammenfasst.]
+\ProvidesClass{bschlangaul-sammlung}[2019/10/27 Klasse zum
+Setzen von Aufgabensammlung, d.h. Dokumenten, in denen sowohl sonstige
+Aufgaben als auch Examensaufgaben zusammengefasst werden.]
 %    \end{macrocode}
 
 % Lade die wichtigsten Pakete. Formatierung muss vor literatur sein, sonst Option clash
@@ -669,6 +675,11 @@ Dokuments, das alles zusammenfasst.]
 \bLadeAllePakete
 %    \end{macrocode}
 
+% Nochmals makros laden, damit zum Beispiel dh nicht überschrieben wird.
+%    \begin{macrocode}
+\bLadePakete{makros}
+%    \end{macrocode}
+
 % Komischer Option-Clash deshalb ganz am Ende, für die Silbentrennung
 %    \begin{macrocode}
 \RequirePackage[ngerman]{babel}
@@ -684,11 +695,60 @@ Dokuments, das alles zusammenfasst.]
 
 % Breiterer rechter Rand für die Indexes
 %    \begin{macrocode}
-\geometry{
+\geometry
+{
   right = 3cm,
   marginparwidth = 2.8cm,
 }
 %    \end{macrocode}
+
+%    \begin{macrocode}
+\cs_new:Npn \url_tex_quelltext:
+{
+  \begin{spacing}{1}
+    \tiny
+    \noindent
+    \bMetaQuelltext\\
+    \_gib_github_url_href:
+  \end{spacing}
+}
+%    \end{macrocode}
+
+% \begin{macro}{\bAufgabe}
+% Überschreibt Makro-Definition in der Datei aufgaben-einbinden.sty
+%    \begin{macrocode}
+\def\bAufgabe #1
+{
+  \def\bAufgabenMetadaten ##1
+  {
+    \bMetaSetze{##1}
+    \subsection{Übungsaufgabe ~ „\g_thematik_tl“ ~ (\g_stichwoerter_tl)}
+  }
+  \input{\bPfadAufgaben/#1.tex}
+
+  \url_tex_quelltext:
+  \clearpage
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\bExamensAufgabe}
+% Überschreibt Makro-Definition in der Datei aufgaben-einbinden.sty
+%    \begin{macrocode}
+\def\bExamensAufgabe #1
+{
+  \def\bAufgabenMetadaten ##1
+  {
+    \bMetaSetze{##1}
+    \subsection{Examensaufgabe ~ „\g_thematik_tl“ ~ (\g_referenz_tl)}
+  }
+  \input{\bPfadAufgaben/Staatsexamen/#1.tex}
+
+  \url_tex_quelltext:
+  \clearpage
+}
+%    \end{macrocode}
+% \end{macro}
 
 %    \begin{macrocode}
 \AddToHook { begindocument }
@@ -698,12 +758,11 @@ Dokuments, das alles zusammenfasst.]
   {
     {
       \Huge
-      Die~komplette~Sammlung
+      Die ~ komplette ~ Sammlung
     }
-
   }
   {
-    Alle~Aufgaben
+    Alle ~ Übungs- ~ und ~ Examensaufgaben
   }
 
   \tableofcontents
@@ -776,7 +835,7 @@ Setzen von Theorie-Zusammenfassungen]
 % \subsection{abmessung.sty}
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesPackage{bschlangaul-baum}[2021/09/04 Einstellung der
+\ProvidesPackage{bschlangaul-abmessung}[2021/09/04 Einstellung der
 Seitenabmessung mit Hilfe des geometry-Pakets.]
 %    \end{macrocode}
 
@@ -827,7 +886,7 @@ Binde Aufgaben in ein größeres Dokument ein.]
 % z. B. |\bExamensAufgabe{46116/2015/09/Thema-2/Teilaufgabe-1/Aufgabe-3}|
 %    \begin{macrocode}
 \def\bExamensAufgabe#1{
-  \input{\bPfadAufgaben/Staatsexamen/#1.tex}
+  \input{\bPfadAufgaben/Examen/#1.tex}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -835,7 +894,7 @@ Binde Aufgaben in ein größeres Dokument ein.]
 % \begin{macro}{\bExamensAufgabeTTA}
 %    \begin{macrocode}
 \def\bExamensAufgabeTTA #1 / #2 / #3 : Thema #4 Teilaufgabe #5 Aufgabe #6 {
-  \input{\bPfadAufgaben/Staatsexamen/#1/#2/#3/Thema-#4/Teilaufgabe-#5/Aufgabe-#6.tex}
+  \input{\bPfadAufgaben/Examen/#1/#2/#3/Thema-#4/Teilaufgabe-#5/Aufgabe-#6.tex}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -843,7 +902,7 @@ Binde Aufgaben in ein größeres Dokument ein.]
 % \begin{macro}{\bExamensAufgabeTA}
 %    \begin{macrocode}
 \def\bExamensAufgabeTA #1 / #2 / #3 : Thema #4 Aufgabe #5 {
-  \input{\bPfadAufgaben/Staatsexamen/#1/#2/#3/Thema-#4/Aufgabe-#5.tex}
+  \input{\bPfadAufgaben/Examen/#1/#2/#3/Thema-#4/Aufgabe-#5.tex}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -851,7 +910,7 @@ Binde Aufgaben in ein größeres Dokument ein.]
 % \begin{macro}{\bExamensAufgabeA}
 %    \begin{macrocode}
 \def\bExamensAufgabeA #1 / #2 / #3 : Aufgabe #4 {
-  \input{\bPfadAufgaben/Staatsexamen/#1/#2/#3/Aufgabe-#4.tex}
+  \input{\bPfadAufgaben/Examen/#1/#2/#3/Aufgabe-#4.tex}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -913,7 +972,8 @@ Setzen der Aufgaben-Metadaten.]
 % }
 % \end{verbatim}
 %    \begin{macrocode}
-\def\bAufgabenMetadaten#1{
+\def\bAufgabenMetadaten #1
+{
   \bMetaSetze{#1}
 
   \_gib_examen_titel: {}
@@ -1360,6 +1420,16 @@ Setzen der Aufgaben-Metadaten.]
 \input /etc/bschlangaul.config.tex
 %    \end{macrocode}
 
+% Defininition einiger Konstanten
+%    \begin{macrocode}
+\def\bPfadLogo{\bPfadAufgaben / .repos / logo}
+\def\bGithubDomain{https://github.com}
+\def\bGithubRawDomain{https://raw.githubusercontent.com}
+\def\bGithubRepoNameAufgaben{bschlangaul-sammlung/examens-aufgaben}
+\def\bGithubRepoNameJava{bschlangaul-sammlung/java-fuer-examens-aufgaben}
+\def\bGitBranch{main}
+%    \end{macrocode}
+
 % \subsubsection{IFs}
 
 % Wir weichen von dem üblichen Namensschema ab und schreiben das Wort
@@ -1426,23 +1496,25 @@ Setzen der Aufgaben-Metadaten.]
     graph,
     hanoi,
     java,
-    kontrollflussgraph,
     komplexitaetstheorie,
+    kontrollflussgraph,
     makros,
     master-theorem,
     mathe,
     minimierung,
+    musik-symbole,
     normalformen,
+    o-notation,
     petri,
     potenzmengen-konstruktion,
-    pumping-lemma,
     pseudo,
+    pumping-lemma,
     relationale-algebra,
     rmodell,
     sortieren,
     spalten,
-    struktogramm,
     sql,
+    struktogramm,
     syntax,
     syntaxbaum,
     synthese-algorithmus,
@@ -1493,22 +1565,27 @@ Setzen der Aufgaben-Metadaten.]
 % Initialisierung der globalen Token-List-Variablen |\g_***_tl|.
 % |auf| steht für Aufgabe.
 %    \begin{macrocode}
-\clist_map_inline:Nn \g_schluessel_clist {
-  \tl_new:c {g_auf_#1_tl}
+\clist_map_inline:Nn \g_schluessel_clist
+{
+  \tl_new:c {g_#1_tl}
 }
 %    \end{macrocode}
 
 % Funktion über alle globalen Token-List-Variablen zurückzusetzten.
 %    \begin{macrocode}
-\cs_new:Npn \_setze_variablen_zurueck: {
-  \clist_map_inline:Nn \g_schluessel_clist {
-    \tl_clear:c {g_auf_##1_tl}
+\cs_new:Npn \_setze_variablen_zurueck:
+{
+  \clist_map_inline:Nn \g_schluessel_clist
+  {
+    \tl_clear:c {g_##1_tl}
   }
 }
 %    \end{macrocode}
 
 % Die einzelnen Schlüssel sind im Interface |AufgabenMetadaten| in der
-% Typescript-Datei |.scripts/nodejs/src/aufgaben.ts| erklärt.
+% Typescript-Datei
+% https://github.com/bschlangaul-sammlung/kommandozeilen-werkzeug/blob/main/src/aufgabe.ts
+% erklärt.
 %    \begin{macrocode}
 \keys_define:nn { aufgabenmetadaten }
 {
@@ -1538,7 +1615,8 @@ Setzen der Aufgaben-Metadaten.]
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_gset:Npn \_setze_relativen_pfad: {
+\cs_gset:Npn \_setze_relativen_pfad:
+{
   \tl_if_empty:NTF \g_relativer_pfad_tl
   {
     \bool_if:nTF
@@ -1549,7 +1627,7 @@ Setzen der Aufgaben-Metadaten.]
     }
     {
       \tl_gset:Nn \g_relativer_pfad_tl {
-        Staatsexamen /
+        Examen /
         \g_einzelpruefungs_nr_tl /
         \g_jahr_tl /
         \g_monat_tl /
@@ -1565,13 +1643,15 @@ Setzen der Aufgaben-Metadaten.]
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_set:Nn \trenner: {
+\cs_set:Nn \trenner:
+{
   \, / \,
 }
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_gset:Npn \gib_jahreszeit_durch_monat: #1 {
+\cs_gset:Npn \gib_jahreszeit_durch_monat: #1
+{
   \str_case_e:nnTF { #1 }
   {
     { 3 } { Frühjahr }
@@ -1634,7 +1714,8 @@ Setzen der Aufgaben-Metadaten.]
 
 % „Einzelprüfungsnummer / Jahr / Jahreszeit“ mit Trennzeichen
 %    \begin{macrocode}
-\cs_gset:Npn \einzelpruefungsnr_jahr_jahreszeit: {
+\cs_gset:Npn \einzelpruefungsnr_jahr_jahreszeit:
+{
   \g_einzelpruefungs_nr_tl
 
   \trenner:
@@ -1649,7 +1730,8 @@ Setzen der Aufgaben-Metadaten.]
 
 % Thema 1 / Teilaufgabe 2 / Aufgabe 3
 %    \begin{macrocode}
-\cs_gset:Npn \thema_teil_aufgabe: {
+\cs_gset:Npn \thema_teil_aufgabe:
+{
   \tl_if_empty:NTF \g_thema_nr_tl {} {
     Thema ~ \g_thema_nr_tl \trenner:
   }
@@ -1668,10 +1750,11 @@ Setzen der Aufgaben-Metadaten.]
 % Examensaufgabe, wird auch eine Titel zurückgegeben. Für die
 % Kopfzeile gedacht.
 %    \begin{macrocode}
-\cs_new:Npn \aufgabenpfad_lang: {
+\cs_new:Npn \aufgabenpfad_lang:
+{
   \tl_if_empty:NTF \g_einzelpruefungs_nr_tl
   {
-    \g_titel_tl
+    \g_thematik_tl
   }
   {
     \einzelpruefungsnr_jahr_jahreszeit:
@@ -1696,7 +1779,7 @@ Setzen der Aufgaben-Metadaten.]
       \footnotesize
       \par
       \noindent
-      Staatsexamen ~
+      Examen ~
       \g_einzelpruefungs_nr_tl \trenner:
       \g_jahr_tl \trenner:
 
@@ -1723,7 +1806,8 @@ Setzen der Aufgaben-Metadaten.]
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_new:Npn \_gib_github_url: {
+\cs_new:Npn \_gib_github_url:
+{
   \bGithubDomain /
   \bGithubRepoNameAufgaben /
   blob /
@@ -1733,7 +1817,8 @@ Setzen der Aufgaben-Metadaten.]
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_new:Npn \_gib_github_url_href: {
+\cs_new:Npn \_gib_github_url_href:
+{
   \tl_if_empty:NTF \g_relativer_pfad_tl {} {
     \url{ \_gib_github_url: }
   }
@@ -1741,7 +1826,8 @@ Setzen der Aufgaben-Metadaten.]
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_new:Npn \_gib_aufgaben_titel: {
+\cs_new:Npn \_gib_aufgaben_titel:
+{
   \g_titel_tl
 
   \tl_if_empty:NTF \g_thematik_tl
@@ -1810,7 +1896,8 @@ Setzen der Aufgaben-Metadaten.]
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\cs_new:Npn \keine_einrueckung: {
+\cs_new:Npn \keine_einrueckung:
+{
   \par
   \@afterindentfalse
   \@afterheading
@@ -2053,14 +2140,23 @@ Binär- und AVL-Bäumen. Hüll-Paket um TikZ and tikz-qtree.]
 Multiple-Choice-Fragen. Simulation von Kästchen zum ankreuzen]
 %    \end{macrocode}
 
-%    \begin{macrocode}
-\RequirePackage{amssymb}
-%    \end{macrocode}
+% \begin{verbatim}
+% \begin{itemize}
+% \bCheckboxAngekreuzt EXtreme Programming (XP)\index{EXtreme Programming}
+% \bCheckboxLeer Das V-Modell 97\index{V-Modell}
+% \bCheckboxLeer Wasserfallmodell\index{Wasserfallmodell}
+% \bCheckboxAngekreuzt Scrum\index{SCRUM}
+% \end{itemize}
+% \end{verbatim}
 
 % \bFaulenzer{
 %   l = bCheckboxLeer,
 %   k = bCheckboxAngekreuzt
 % }
+
+%    \begin{macrocode}
+\RequirePackage{amssymb}
+%    \end{macrocode}
 
 % \begin{macro}{\bCheckboxAngekreuzt}
 % Angekreuztes Kästchen (nur innerhalb der |itemize|-Umgebung zu verwenden.
@@ -3524,6 +3620,34 @@ ER-Diagrammen]
 %   edge node {$\bigcup$} (union);
 % \end{verbatim}
 
+% \subsubsection{Verkleinern und Vergrößern}
+% https://tex.stackexchange.com/a/4340
+
+% \begin{verbatim}
+% \begin{center}
+% \resizebox{0.7\textwidth}{!}{
+% \begin{tikzpicture}[scale=1.5]
+% \node[entity] (Fahrer) at (0,0) {Fahrer};
+% \node[entity] (Fahrzeug) at (5,0) {Fahrzeug};
+% \node[entity] (Abteilung) at (10,0) {Abteilung};
+% \node[entity] (Garage) at (5,-4) {Garage};
+%
+% \node[relationship,align=center] (Fahrerlaubnis) at (2.5,0) {Fahrer-\\laubnis}
+%   edge (Fahrer)
+%   edge (Fahrzeug);
+%
+% \node[relationship] (gehoert) at (7.5,0) {gehoert}
+%   edge (Fahrzeug)
+%   edge (Abteilung);
+%
+% \node[relationship] (stehtIn) at (5,-2) {stehtIn}
+%   edge (Fahrzeug)
+%   edge (Garage);
+% \end{tikzpicture}
+% }
+% \end{center}
+% \end{verbatim}
+
 %    \begin{macrocode}
 \RequirePackage{soul}
 %    \end{macrocode}
@@ -3831,6 +3955,7 @@ $\bMengeOhneMathe{#1}$%
     \, #3 \,
   \}$
 }
+\ExplSyntaxOff
 %    \end{macrocode}
 % \end{macro}
 
@@ -3838,13 +3963,15 @@ $\bMengeOhneMathe{#1}$%
 % Link zur flaci.com Website: |\bFlaci{Grxk1oczg}|: \bFlaci{Grxk1oczg}
 %    \begin{macrocode}
 \def\bFlaci#1{%
-  \begin{space}{1}
-    \tiny
-    Der ~ Automat ~ auf ~ flaci.com ~ (FLACI: ~ Formale Sprachen, ~ abstrakte ~
-    Automaten, ~ Compiler ~ und ~ Interpreter) ~ Ein ~ Projekt ~ der ~ Hochschule ~
-    Zittau/Görlitz ~ und ~ der ~ Pädagogischen ~ Hochschule ~ Schwyz: ~
+  \par
+  {%
+    \scriptsize
+    Der Automat auf flaci.com (FLACI: Formale Sprachen, abstrakte
+    Automaten, Compiler und Interpreter) Ein Projekt der Hochschule
+    Zittau/Görlitz und der Pädagogischen Hochschule Schwyz:
     \href{https://flaci.com/#1}{flaci.com/#1}%
-  \end{space}
+  }%
+  \par
 }
 %    \end{macrocode}
 % \end{macro}
@@ -3863,6 +3990,7 @@ $\bMengeOhneMathe{#1}$%
 % \end{itemize}
 %
 %    \begin{macrocode}
+\ExplSyntaxOn
 \NewDocumentCommand {\bGrammatik} { O{G} m } {
   \tl_set:Nn \l_variablen_tl {V}
   \tl_set:Nn \l_alphabet_tl {\Sigma}
@@ -4451,6 +4579,7 @@ lassen]
 % \begin{macro}{\bJavaExamen}
 % |\bJavaExamen{66116}{2015}{03}{Kunde}|
 % Regulärer Ausdruck zum Konvertieren:
+% |\\bJavaDatei(\[.*\])?\{.*examen_(\d{5})/jahr_(\d{4})/(fruehjahr herbst)/(.*)\}|
 % |\\bJavaDatei(\[.*\])?\{.*examen_(\d{5})_(\d{4})_(\d{2})/(.*)\}|
 % |\\bJavaExamen$1{$2}{$3}{$4}{$5}|
 %    \begin{macrocode}
@@ -4893,6 +5022,7 @@ und Fußzeilen mit Hilfe des Pakets fancyhdr.]
   \fancyfoot[C]{\kopfzeile_schrift:n{\bMetaEmail}}
   \fancyfoot[R]{\kopfzeile_schrift:n{\thepage}}
 
+  \setlength{\headheight}{16pt}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0.4pt}
 }
@@ -5678,7 +5808,7 @@ anderen Paket passen]
 % \subsection{meta.sty}
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesPackage{bschlangaul-klassen-meta}[2021/09/10 Sammlung
+\ProvidesPackage{bschlangaul-meta}[2021/09/10 Sammlung
 von Textschnipseln, die das Projekt beschreiben]
 %    \end{macrocode}
 
@@ -5701,11 +5831,20 @@ von Textschnipseln, die das Projekt beschreiben]
 %    \end{macrocode}
 % \end{macro}
 
+% \begin{macro}{\bMetaHermineGanzerName}
+%    \begin{macrocode}
+\def\bMetaHermineGanzerName
+{
+  Hermine ~ Bschlangaul
+}
+%    \end{macrocode}
+% \end{macro}
+
 % \begin{macro}{\bMetaHermineFriends}
 %    \begin{macrocode}
 \def\bMetaHermineFriends
 {
-  Hermine~Bschlangaul~and~Friends
+  \bMetaHermineGanzerName{} ~ and ~ Friends
 }
 %    \end{macrocode}
 % \end{macro}
@@ -5769,9 +5908,9 @@ von Textschnipseln, die das Projekt beschreiben]
 {
   Hilf~mit!~
 
-  Die~Hermine~schafft~das~nicht~alleine!~
+  Die~Hermine~schafft~das~nicht~allein!~
 
-  Das~ist~ein~Community-Projekt.~
+  Das~ist~ein~Community-Projekt!~
 
   Verbesserungsvorschläge,~Fehlerkorrekturen,~weitere~Lösungen~sind~
   herzlich~willkommen~-~egal~wie~-~per~Pull-Request~oder~per~E-Mail~an~
@@ -5780,11 +5919,21 @@ von Textschnipseln, die das Projekt beschreiben]
 %    \end{macrocode}
 % \end{macro}
 
+% \begin{macro}{\bMetaNochKeineLoesung}
+%    \begin{macrocode}
+\def\bMetaNochKeineLoesung
+{
+  Diese ~ Aufgabe ~ hat ~ noch ~ keine ~ Lösung. ~
+  \bMetaHilfMit
+}
+%    \end{macrocode}
+% \end{macro}
+
 % \begin{macro}{\bMetaHilfMit}
 %    \begin{macrocode}
 \def\bMetaQuelltext
 {
-  Der~\TeX-Quelltext~dieses~Dokuments~kann~unter~folgender~
+  Der~\TeX-Quelltext~dieser~Aufgabe~kann~unter~folgender~
   URL~aufgerufen~werden:~
 }
 %    \end{macrocode}
@@ -6052,6 +6201,24 @@ Minimierungsalgorithmus von einem NEA zu einem DEA]
 \ExplSyntaxOff
 %    \end{macrocode}
 % \end{macro}
+
+%    \begin{macrocode}
+
+%    \end{macrocode}
+% \subsection{musik-symbole.sty}
+%    \begin{macrocode}
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{bschlangaul-musik-symbole}[2022/09/05 Hüllpaket um lilyglyphs, um Musiksymbole setzen zu können.]
+%    \end{macrocode}
+
+% Option clash for package adjustbox https://tex.stackexchange.com/a/263870/42311
+%    \begin{macrocode}
+\PassOptionsToPackage{export}{adjustbox}
+%    \end{macrocode}
+
+%    \begin{macrocode}
+\RequirePackage{lilyglyphs}
+%    \end{macrocode}
 
 %    \begin{macrocode}
 
@@ -7735,24 +7902,24 @@ Erweiterung bereitstellt]
 %    \begin{macrocode}
 \NewDocumentCommand{ \bUmlLeserichtung } { O{dir=right} m }
 {
-  \def\@liDirLeft{}
-  \def\@liDirRight{ \RIGHTarrow}
+  \def\@bDirLeft{}
+  \def\@bDirRight{ \RIGHTarrow}
   \pgfkeys{/lese/dir/.is choice}
-  \pgfkeys{/lese/dir/up/.code={\def\@liDirRight{ \UParrow}}}
-  \pgfkeys{/lese/dir/down/.code={\def\@liDirRight{ \DOWNarrow}}}
-  \pgfkeys{/lese/dir/left/.code={\def\@liDirRight{}\def\@liDirLeft{\LEFTarrow }}}
-  \pgfkeys{/lese/dir/right/.code={\def\@liDirRight{ \RIGHTarrow}}}
+  \pgfkeys{/lese/dir/up/.code={\def\@bDirRight{ \UParrow}}}
+  \pgfkeys{/lese/dir/down/.code={\def\@bDirRight{ \DOWNarrow}}}
+  \pgfkeys{/lese/dir/left/.code={\def\@bDirRight{}\def\@bDirLeft{\LEFTarrow }}}
+  \pgfkeys{/lese/dir/right/.code={\def\@bDirRight{ \RIGHTarrow}}}
 
-  \def\@liPos{above}
-  \pgfkeys{/lese/pos/.code={\def\@liPos{##1}}}
+  \def\@bPos{above}
+  \pgfkeys{/lese/pos/.code={\def\@bPos{##1}}}
 
-  \def\@liDistance{0cm}
-  \pgfkeys{/lese/distance/.code={\def\@liDistance{##1}}}
+  \def\@bDistance{0cm}
+  \pgfkeys{/lese/distance/.code={\def\@bDistance{##1}}}
 
   \pgfkeys{/lese/.cd,#1}
 
-  \node[\@liPos = \@liDistance of #2-middle] {
-    \@liDirLeft{\footnotesize#2}\@liDirRight
+  \node[\@bPos = \@bDistance of #2-middle] {
+    \@bDirLeft{\footnotesize#2}\@bDirRight
   };
 }
 %    \end{macrocode}

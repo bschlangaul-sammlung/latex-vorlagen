@@ -6,5 +6,8 @@
 *.ilg
 *.ind
 *.ins
+*.aux
+*.out
+*.toc
 README.txt
 dokumentation.sty
