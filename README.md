@@ -16,8 +16,8 @@ dokumentiert.
 
 ```tex
 % Bitte anpassen
-% Lokaler Pfad des Repositories: https://github.com/bschlangaul-sammlung/examens-aufgaben
-% z. B. ...Aufgaben{/home/hermine/repos/examens-aufgaben}
+% Lokaler Pfad des Repositories: https://github.com/bschlangaul-sammlung/examens-aufgaben-tex
+% z. B. ...Aufgaben{/home/hermine/repos/examens-aufgaben-tex}
 \def\bPfadAufgaben{/absoluter/pfad/zum/aufgaben/repo}
 ```
 
