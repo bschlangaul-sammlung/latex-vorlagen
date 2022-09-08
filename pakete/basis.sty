@@ -6,22 +6,6 @@
 \ExplSyntaxOn
 %    \end{macrocode}
 
-% Lade die Konfigurationsdatei.
-% |\def\bPfadAufgaben{/pfad/zum/repository}|
-%    \begin{macrocode}
-\input /etc/bschlangaul.config.tex
-%    \end{macrocode}
-
-% Defininition einiger Konstanten
-%    \begin{macrocode}
-\def\bPfadLogo{\bPfadAufgaben / .repos / logo}
-\def\bGithubDomain{https://github.com}
-\def\bGithubRawDomain{https://raw.githubusercontent.com}
-\def\bGithubRepoNameAufgaben{bschlangaul-sammlung/examens-aufgaben}
-\def\bGithubRepoNameJava{bschlangaul-sammlung/java-fuer-examens-aufgaben}
-\def\bGitBranch{main}
-%    \end{macrocode}
-
 % \subsubsection{IFs}
 
 % Wir weichen von dem üblichen Namensschema ab und schreiben das Wort
@@ -122,6 +106,21 @@
 }
 %    \end{macrocode}
 % \end{macro}
+
+%    \begin{macrocode}
+\bLadePakete{konfiguration}
+%    \end{macrocode}
+
+% Defininition einiger Konstanten
+%    \begin{macrocode}
+\def\bPfadAufgaben{\bKonfiguration{repos.examensAufgabenTex.lokalerPfad}}
+\def\bPfadLogo{\bPfadAufgaben / .repos / logo}
+\def\bGithubDomain{https://github.com}
+\def\bGithubRawDomain{https://raw.githubusercontent.com}
+\def\bGithubRepoNameAufgaben{bschlangaul-sammlung/examens-aufgaben-tex}
+\def\bGithubRepoNameJava{bschlangaul-sammlung/java-fuer-examens-aufgaben}
+\def\bGitBranch{main}
+%    \end{macrocode}
 
 % Definition einer Komma-getrennten-Liste mit deren Hilfe die
 % vielen globalen Token-List-Variablen definiert werden können.
