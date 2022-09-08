@@ -33,7 +33,7 @@ dokumentiert.
 \bAufgabenMetadaten{
   Titel = {Aufgabe 5},
   Thematik = {Schnelle Suche von Schlüsseln: odd-ascending-even-descending-Folge},
-  RelativerPfad = Staatsexamen/66115/2020/09/Thema-2/Teilaufgabe-2/Aufgabe-5.tex,
+  RelativerPfad = Examen/66115/2020/09/Thema-2/Teilaufgabe-2/Aufgabe-5.tex,
   ZitatSchluessel = examen:66115:2020:09,
   % unbekannt, OCR, TeX-Fehler, nur Angabe, mit Lösung
   BearbeitungsStand = unbekannt, % Siehe https://github.com/bschlangaul-sammlung/kommandozeilen-werkzeug/blob/main/src/aufgabe.ts#L27-L38

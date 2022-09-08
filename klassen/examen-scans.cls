@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{bschlangaul-examen-scans}[2021/01/08 Zum
-Zusammenfügen mehrerer Staatsexamen-Scans zu einer PDF-Datei.]
+Zusammenfügen mehrerer Examen-Scans zu einer PDF-Datei.]
 %    \end{macrocode}
 
 %    \begin{macrocode}

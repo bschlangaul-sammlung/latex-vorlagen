@@ -63,7 +63,7 @@ mehreren Aufgaben zu einem Examen.]
   \tl_gset:Nn \g_aufgabe_nr_tl { #1 }
   \input{
     \bPfadAufgaben /
-    Staatsexamen /
+    Examen /
     \g_einzelpruefungs_nr_tl /
     \g_jahr_tl /
     \g_monat_tl /
