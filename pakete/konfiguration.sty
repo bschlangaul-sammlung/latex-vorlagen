@@ -1,0 +1,34 @@
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{bschlangaul-konfiguration}[2022/09/08 Laden der Konfigurationsdatei /etc/bschlangaul.json]
+%    \end{macrocode}
+
+%    \begin{macrocode}
+\ExplSyntaxOn
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\directlua
+{
+  konfiguration = require('bschlangaul-konfiguration')
+}
+%    \end{macrocode}
+%
+% \begin{macro}{\konfiguration}
+% Must be expandable, otherwise you will get the following error
+% message: xparse is not expandable
+%    \begin{macrocode}
+\NewExpandableDocumentCommand { \konfiguration } { m }
+{
+  \directlua
+  {
+    tex.print(konfiguration.get_config('#1'))
+  }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%    \begin{macrocode}
+\ExplSyntaxOff
+%    \end{macrocode}
+
+%    \begin{macrocode}
