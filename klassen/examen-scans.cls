@@ -92,7 +92,13 @@ Zusammenfügen mehrerer Examen-Scans zu einer PDF-Datei.]
 
 % \begin{macro}{\bBindePdfEin}
 %    \begin{macrocode}
-\def\bBindePdfEin#1{\includepdf[pages={1-}]{\bPfadAufgaben/#1}}
+\def\bBindePdfEin #1
+{
+  \includepdf[pages={1-}]
+  {
+    \bKonfiguration{ repos.examenScans.lokalerPfad }/ #1
+  }
+}
 %    \end{macrocode}
 % \end{macro}
 
