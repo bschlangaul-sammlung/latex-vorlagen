@@ -368,10 +368,10 @@
 %    \begin{macrocode}
 \cs_new:Npn \_gib_github_url:
 {
-  \bGithubDomain /
-  \bGithubRepoNameAufgaben /
+  \bKonfiguration{ github.domain } /
+  \bGithubRepoNameAufgaben  \bKonfiguration{ repos.examensAufgabenTex.name } /
   blob /
-  \bGitBranch /
+  \bKonfiguration{ github.branch } /
   \g_relativer_pfad_tl
 }
 %    \end{macrocode}
