@@ -70,7 +70,7 @@ end
 
 -- @return Der absolute lokale Dateipfad
 local function gib_absoluten_pfad(relativer_pfad, ist_test)
-  return KONF.tex_repo_lokaler_pfad ..
+  return konfig.repos.examensAufgabenTex.lokalerPfad ..
     '/.repos/java/' ..
     gib_relativen_repo_pfad(relativer_pfad, ist_test)
 end
@@ -86,7 +86,7 @@ end
 -- Github URL
 
 local function gib_github_url(relativer_repo_pfad)
-  local url = konfig.git.url:gsub('<name>', konfig.repos.javaFuerExamensAufgaben.name)
+  local url = konfig.github.url:gsub('<name>', konfig.repos.javaFuerExamensAufgaben.name)
   return url .. '/blob/' ..
     konfig.github.branch ..'/' .. relativer_repo_pfad
 end
