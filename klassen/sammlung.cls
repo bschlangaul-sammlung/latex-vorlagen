@@ -91,7 +91,7 @@ Aufgaben als auch Examensaufgaben zusammengefasst werden.]
     \bMetaSetze{##1}
     \subsection{Examensaufgabe ~ „\g_thematik_tl“ ~ (\g_referenz_tl)}
   }
-  \input{\bPfadAufgaben/Staatsexamen/#1.tex}
+  \input{\bPfadAufgaben/Examen/#1.tex}
 
   \url_tex_quelltext:
   \clearpage
