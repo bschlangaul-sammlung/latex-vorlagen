@@ -100,10 +100,6 @@ local function gib_github_examen_url(nummer, jahr, monat, pfad)
 end
 
 local export = {
-  importiere_konfiguration = function(schluessel, wert)
-    KONF[schluessel] = wert
-  end,
-
   -- absoluten pfad
 
   drucke_absoluten_pfad = function(relativer_pfad, ist_test)
