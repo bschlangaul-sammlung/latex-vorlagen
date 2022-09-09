@@ -13,26 +13,11 @@
 -- Github-Raw-URL:
 -- https://raw.githubusercontent.com/bschlangaul-sammlung/java-fuer-examens-aufgaben/main/src/main/java/org/bschlangaul/graph/Knoten.java
 
--- wir durch die Funktion importiere_konfiguration() gesetzt
-KONF = {
-  -- \bPfadAufgaben
-  tex_repo_lokaler_pfad = nil,
+if konfiguration == nil then
+  konfiguration = require('bschlangaul-konfiguration')
+end
 
-  -- \bGithubDomain
-  github_domain = nil,
-
-  -- \bGithubRawDomain
-  github_raw_domain = nil,
-
-  -- \bGithubRepoNameAufgaben
-  github_tex_repo = nil,
-
-  -- \bGithubRepoNameJava
-  github_code_repo = nil,
-
-  -- \bGitBranch
-  git_branch = nil,
-}
+local konfig = konfiguration.config
 
 local luakeys = require('luakeys')
 
@@ -101,9 +86,9 @@ end
 -- Github URL
 
 local function gib_github_url(relativer_repo_pfad)
-  return KONF.github_domain .. '/' ..
-    KONF.github_code_repo .. '/blob/' ..
-    KONF.git_branch ..'/' .. relativer_repo_pfad
+  local url = konfig.git.url:gsub('<name>', konfig.repos.javaFuerExamensAufgaben.name)
+  return url .. '/blob/' ..
+    konfig.github.branch ..'/' .. relativer_repo_pfad
 end
 
 local function gib_github_examen_url(nummer, jahr, monat, pfad)
