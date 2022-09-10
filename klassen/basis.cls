@@ -19,7 +19,9 @@ Unterklasse benutzt werden soll.]
 % Lade Pakete die von allen Unterklassen benötigt werden.
 %    \begin{macrocode}
 \bLadePakete{
-  kopfzeile
+  kopfzeile,
+  formatierung,
+  makros,
 }
 %    \end{macrocode}
 
