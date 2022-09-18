@@ -45,7 +45,7 @@ Unterklasse benutzt werden soll.]
 
 % Damit die Aufgaben mehrmals kompiliert werden können, ohne dass sich
 % die PDF-Datei ändert. So kommen nur inhaltliche Änderung im
-% Git-Respository an https://tex.stackexchange.com/a/313605
+% Git-Respository an (https://tex.stackexchange.com/a/313605).
 %    \begin{macrocode}
 \pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
 %    \end{macrocode}
